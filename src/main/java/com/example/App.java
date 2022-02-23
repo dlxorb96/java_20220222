@@ -20,20 +20,32 @@ public class App {
     public static void main(String[] args) {
 
         // db에 member데이터 삽입하기
+        // memberDB obj = new memberDB();
+
+        // Member member = new Member();
+        // member.setId("1dx1");
+        // member.setName("asdaqw");
+        // member.setRegdate("202131020");
+        // member.setAge(127);
+        // member.setRole("customer");
+        // int ret = obj.insertData(member);
+        // if (ret == 1) {
+        // System.out.println("추가성공");
+        // } else {
+        // System.out.println("추가실패");
+        // }
+
         memberDB obj = new memberDB();
 
         Member member = new Member();
-        member.setId("1dx1");
-        member.setName("asdaqw");
-        member.setRegdate("202131020");
-        member.setAge(127);
-        member.setRole("customer");
-        int ret = obj.insertData(member);
+        member.setId("A");
+        int ret = obj.deleteData(member);
         if (ret == 1) {
-            System.out.println("추가성공");
+            System.out.println("삭제성공");
         } else {
-            System.out.println("추가실패");
+            System.out.println("삭제실패");
         }
+
     }
 }
 

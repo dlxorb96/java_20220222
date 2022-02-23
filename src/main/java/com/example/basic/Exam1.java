@@ -5,7 +5,7 @@ public class Exam1<E> {
     // private int num = 0; // 숫자형
     private E name = null; // 타입이 없음.
 
-    // namve을 변경하기
+    // name을 변경하기
     public void setData(E na) {
         this.name = na;
     }
