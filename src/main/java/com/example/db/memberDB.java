@@ -8,10 +8,13 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.result.DeleteResult;
 // import com.mongodb.client.MongoIterable;
 import com.mongodb.client.result.InsertOneResult;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 // 파일명 : MemberDB.java
 public class memberDB {
@@ -36,25 +39,47 @@ public class memberDB {
     }
 
     public int insertData(Member member) {
-        Document doc = new Document();
-        doc.append("_id", member.getId());
-        doc.append("name", member.getId());
-        doc.append("age", member.getAge());
-        doc.append("regdate", member.getRegdate());
-        doc.append("role", member.getRole());
+        try {
 
-        InsertOneResult result = this.collection.insertOne(doc);
-        System.out.println(result);
-        if (result.getInsertedId()
-                .asString()
-                .getValue().equals(member.getId())) {
-            return 1;
+            Document doc = new Document();
+            doc.append("_id", member.getId());
+            doc.append("name", member.getId());
+            doc.append("age", member.getAge());
+            doc.append("regdate", member.getRegdate());
+            doc.append("role", member.getRole());
+
+            InsertOneResult result = this.collection.insertOne(doc);
+            System.out.println(result);
+            if (result.getInsertedId()
+                    .asString()
+                    .getValue().equals(member.getId())) {
+                return 1;
+            }
+            return 0;
+
+        } catch (Exception e) {
+            e.printStackTrace(); // 오류출력
+            return -1;
         }
-        return 0;
-
     }
+    // 메소드
+    // get~ 정보가져오기
+    // set~ 정보변경
 
-    public void deleteData() {
+    public int deleteData(Member member) {
+        try {
+            // 조건 만들기
+            Bson bson = Filters.eq("_id", member.getId());
+            // 삭제하기
+            DeleteResult result = this.collection.deleteOne(bson);
+            if (result.getDeletedCount() == 1L) {
+                return 1;
+            }
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace(); // 오류 출력
+            return -1;
+        }
 
     }
 
