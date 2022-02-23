@@ -50,7 +50,7 @@ public class board {
         this.hit = hit;
     }
 
-    // 3. toString()만들기
+    // 3. toString 현재 변수에 들어가 있는 값을 확인
     @Override
     public String toString() {
         return "board [content=" + content + ", hit=" + hit + ", no=" + no + ", title=" + title + ", writer=" + writer
