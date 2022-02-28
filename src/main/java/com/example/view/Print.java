@@ -1,6 +1,6 @@
 package com.example.view;
 
-import com.example.vo.board;
+import com.example.vo.Board;
 
 // 출력하는 곳
 // jsp, vue, react로 전환될 영역
@@ -8,14 +8,14 @@ public class Print {
 
     // 1. 변수 만들기
     // 받아오는 값이니까 null 여기서 선언할게 아님
-    private board board = null;
+    private Board board = null;
 
     // 2. getter setter 만들기
-    public board getBoard() {
+    public Board getBoard() {
         return board;
     }
 
-    public void setBoard(board board) {
+    public void setBoard(Board board) {
         this.board = board;
     }
 

@@ -1,69 +1,28 @@
 package com.example;
 
-import com.example.basic.Exam1;
-import com.example.basic.Exam2;
-import com.example.db.memberDB;
-import com.example.vo.Book;
-import com.example.vo.Member;
+import java.util.List;
+import com.example.db.ItemDB;
+import com.example.db.ItemDBImpl;
 
-// import com.example.view.Print;
-// import com.example.view.Print1;
-// import com.example.vo.Item;
-// import com.example.vo.Member;
-// import com.example.vo.board;
-
-// import com.example.vo.member;
+import com.example.vo.Item;
 
 //프로그램 시작 위치
 public class App {
 
     public static void main(String[] args) {
 
-        // db에 member데이터 삽입하기
-        // memberDB obj = new memberDB();
-
-        // Member member = new Member();
-        // member.setId("1dx1");
-        // member.setName("asdaqw");
-        // member.setRegdate("202131020");
-        // member.setAge(127);
-        // member.setRole("customer");
-        // int ret = obj.insertData(member);
-        // if (ret == 1) {
-        // System.out.println("추가성공");
-        // } else {
-        // System.out.println("추가실패");
+        // 물품하나 조회하기
+        ItemDB obj = new ItemDBImpl();
+        // List<Item> item = obj.selectListItem();
+        // for (Item tmp : item) {
+        // System.out.println(tmp.toString());
         // }
-
-        memberDB obj = new memberDB();
-
-        Member member = new Member();
-        member.setId("A");
-        int ret = obj.deleteData(member);
-        if (ret == 1) {
-            System.out.println("삭제성공");
-        } else {
-            System.out.println("삭제실패");
+        List<Item> item = obj.selectListPageItem(1);
+        for (Item tmp : item) {
+            System.out.println(tmp.toString());
         }
-
     }
 }
-
-// getter setter로 실행
-
-// board obj = new board();
-// obj.setNo(1);
-// obj.setContent("안녕");
-// obj.setHit(2);
-// obj.setTitle("반갑당");
-// obj.setWriter("율곡이이");
-// print 에서 출력해ㅑㅇ함
-// System.out.println(obj.toString());
-
-// // 2 . 프른트하기
-// Print obj1 = new Print();
-// obj1.setBoard(obj);
-// obj1.printAction();
 
 // 물품 2개 보관
 
@@ -148,3 +107,98 @@ public class App {
 // } else {
 // System.out.println("추가실패");
 // }
+
+// db에 member데이터 삽입하기
+// memberDB obj = new memberDB();
+
+// Member member = new Member();
+// member.setId("1dx1");
+// member.setName("asdaqw");
+// member.setRegdate("202131020");
+// member.setAge(127);
+// member.setRole("customer");
+// int ret = obj.insertData(member);
+// if (ret == 1) {
+// System.out.println("추가성공");
+// } else {
+// System.out.println("추가실패");
+// }
+
+// db 데이터 삭제하기
+// memberDB obj = new memberDB();
+
+// Member member = new Member();
+// member.setId("A");
+// int ret = obj.deleteData(member);
+// if (ret == 1) {
+// System.out.println("삭제성공");
+// } else {
+// System.out.println("삭제실패");
+// }
+
+// 객체 생성
+// memberDB obj = new memberDB();
+
+// 리스트 조회하기
+// ArrayList<Member> list = obj.selectListData();
+// System.out.println(list);
+// // 이걸로 하면 원하는 값이 안나옴
+// for (Member tmp : list) {
+// System.out.println(tmp.toString());
+// }
+
+// child.java, parent.java 상속 파트 공부 -20220224
+// Parent obj1 = new Parent();
+// 미완성된 것이기 때문에 만들 수가 없다. 객체 자체가 만들어지지 않는다.
+// obj1.printNum();
+
+// 이방식을 잴 많이씀 obj2
+// Parent obj2 = new child1();
+// obj2.printNum();
+// obj2.printNum1();
+
+// 업데이트
+
+// BoardDB obj = new BoardDBImpl();
+// Board board = new Board(1L, "아아느", "먀머주", "자자자", 13);
+
+// // board.setTitle("아아");
+// // board.setContent("메메");
+// // board.setWriter("리카노");
+// int ret = obj.updateBoard(board);
+// System.out.println(ret);
+
+// 삭제 오류 직접 처리
+// try {
+// int ret = obj.deleteItem(10134);
+// System.out.println(ret);
+// } catch (Exception e) {
+// e.printStackTrace();
+// }
+
+// map을 통해서 조회하기
+// 컬레션 => 수집
+
+// ex) "aaa", "bbb", "ccc"
+// 데이터를 순차적으로 넣어줌
+// 순차적인 거에 유리하다ㅏ
+// List<String> list1 = new ArrayList<>();
+
+// // ex ) {"_id": "value", "Name": "bbb", "age":13}
+// // 특정한거를 한개 찝어낼때 유리하다
+// Map<String, String> map1 = new HashMap<>();
+
+// // 3. 한 개 조회
+// Map<String, Object> map = obj.selectOneItem(3L);
+// System.out.println(map.get("ID"));
+// System.out.println(map.get("TITLE"));
+// System.out.println(map.get("PRICE"));
+// System.out.println(map.get("QTY"));
+
+// //물품하나 조회하기
+// ItemDB obj = new ItemDBImpl();
+// Item item = obj.selectoneItem(3L);
+// System.out.println(item.getPrice());
+// System.out.println(item.getTitle());
+// System.out.println(item.getQuantity());
+// System.out.println(item.getNo());
